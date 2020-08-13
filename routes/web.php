@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/inductions',function(){
+    $inductees = App\Induction::all();
+    return view('inductions.index',compact('inductees'));
+});
+
+Route::post('/inductions',function(){
+    // validate
+    App\Induction::create(request(['firstname','lastname']));
+    //redirect
+});
